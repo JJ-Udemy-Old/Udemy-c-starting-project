@@ -3,6 +3,7 @@ import { useState } from 'react';
 import TabButton from './TabButton';
 import Section from './Section';
 import { EXAMPLES } from '../Data';
+import Tabs from './Tabs';
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -12,32 +13,37 @@ export default function Examples() {
   }
   return (
     <Section title={'Examples'} id="examples">
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === 'components'}
-          onSelect={() => handleSelect('components')}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'jsx'}
-          onSelect={() => handleSelect('jsx')}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'props'}
-          onSelect={() => handleSelect('props')}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'state'}
-          onSelect={() => handleSelect('state')}
-        >
-          State
-        </TabButton>
-      </menu>
+      <Tabs
+        buttons={
+          <>
+            {' '}
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onSelect={() => handleSelect('components')}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onSelect={() => handleSelect('jsx')}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'props'}
+              onSelect={() => handleSelect('props')}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'state'}
+              onSelect={() => handleSelect('state')}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      ></Tabs>
       {!selectedTopic && <p>Please select a topic.</p>}
       {selectedTopic && (
         <div id="tab-content">
